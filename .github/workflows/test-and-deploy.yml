@@ -45,6 +45,11 @@ jobs:
       - name: Run Unit Tests
         run: make test
 
+      - name: Fix code coverage paths
+        working-directory: ./coverage
+        run: |
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.json
+
       # only send coverage for PRs and branch updates
       - name: SonarCloud Scan
         if: ${{ github.event_name == 'pull_request' || github.ref_type == 'branch' }}
