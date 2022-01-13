@@ -1,4 +1,4 @@
-require "simplecov_json_formatter"
+require 'simplecov_json_formatter'
 SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
