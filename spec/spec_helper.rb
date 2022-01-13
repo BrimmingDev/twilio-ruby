@@ -2,7 +2,9 @@ require 'simplecov'
 require 'simplecov-json'
 SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 
-SimpleCov.start
+SimpleCov.start do
+  enable_coverage :branch
+end
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
