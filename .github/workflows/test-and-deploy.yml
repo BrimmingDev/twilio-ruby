@@ -46,13 +46,14 @@ jobs:
         run: make test
 
       - name: Fix code coverage paths
+        if: ${{ (github.event_name == 'pull_request' || github.ref_type == 'branch') && matrix.ruby == 3.0 }}
         working-directory: ./coverage
         run: |
           sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.json
 
       # only send coverage for PRs and branch updates
       - name: SonarCloud Scan
-        if: ${{ github.event_name == 'pull_request' || github.ref_type == 'branch' }}
+        if: ${{ (github.event_name == 'pull_request' || github.ref_type == 'branch') && matrix.ruby == 3.0 }}
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
