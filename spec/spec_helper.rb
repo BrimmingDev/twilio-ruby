@@ -1,8 +1,11 @@
-require 'simplecov'
-require 'simplecov_json_formatter' if RUBY_VERSION == '3.0.0'
-SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+require 'simplecov' if RUBY_VERSION == '3.0'
+require 'simplecov_json_formatter' if RUBY_VERSION == '3.0'
 
-SimpleCov.start
+if RUBY_VERSION == '3.0'
+  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+  SimpleCov.start
+end
+
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
