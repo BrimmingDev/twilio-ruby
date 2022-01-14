@@ -1,4 +1,4 @@
-if RUBY_VERSION == "3.0"
+if RUBY_VERSION >= '2.5'
   require 'simplecov'
   require 'simplecov_json_formatter'
   SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
